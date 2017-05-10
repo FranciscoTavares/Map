@@ -250,10 +250,10 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
                 
-        if((Edit_Altura.getText().equals("")) && (Edit_Largura.getText().equals(""))){
+        if((Edit_Altura.getText().toString().isEmpty()) || (Edit_Largura.getText().toString().isEmpty())){
             JOptionPane.showMessageDialog(null, "Campo do tamanho de tela está vazio: ");
         }else{
-        
+            
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
