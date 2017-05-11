@@ -5,13 +5,19 @@
  */
 package Main;
 
-import javax.swing.JOptionPane;
+import Métodos.Forma;
 
 /**
  *
  * @author nascimento
  */
 public class Ambiente_Grafico extends javax.swing.JFrame {
+    
+    private static int tamanhoQuadrado = 15;
+    private Integer linha;
+    private Integer coluna;
+    private Integer porcentagemParede;
+    private Forma labirinto;
 
     /**
      * Creates new form Ambiente_Grafico
@@ -29,19 +35,18 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        RadioPrimeiraOpcao = new javax.swing.JRadioButton();
+        RadioSegundaOpcao = new javax.swing.JRadioButton();
+        RadioTerceiraOpcao = new javax.swing.JRadioButton();
+        RadioQuartaOpcao = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
+        RadioBuscaProfundidade = new javax.swing.JRadioButton();
+        RadioCustoUniforme = new javax.swing.JRadioButton();
+        RadioBestFirstSearch = new javax.swing.JRadioButton();
+        RadioAstar = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -49,7 +54,13 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Edit_Altura = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        Btn_executar = new javax.swing.JButton();
+        Btn_padrao = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        MenuItem_Sair = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        MenuItem_Ajuda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("@Rodrigo Nascimento - Uso de Busca em IA");
@@ -57,14 +68,34 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setToolTipText("");
 
-        jRadioButton1.setText("0%");
+        RadioPrimeiraOpcao.setText("0%");
+        RadioPrimeiraOpcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioPrimeiraOpcaoActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("25%");
+        RadioSegundaOpcao.setSelected(true);
+        RadioSegundaOpcao.setText("25%");
+        RadioSegundaOpcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioSegundaOpcaoActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("50%");
+        RadioTerceiraOpcao.setText("50%");
+        RadioTerceiraOpcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioTerceiraOpcaoActionPerformed(evt);
+            }
+        });
 
-        jRadioButton4.setText("75%");
+        RadioQuartaOpcao.setText("75%");
+        RadioQuartaOpcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioQuartaOpcaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,23 +104,23 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                    .addComponent(RadioPrimeiraOpcao)
+                    .addComponent(RadioSegundaOpcao)
+                    .addComponent(RadioTerceiraOpcao)
+                    .addComponent(RadioQuartaOpcao))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(RadioPrimeiraOpcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(RadioSegundaOpcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(RadioTerceiraOpcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(RadioQuartaOpcao)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -99,14 +130,34 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jRadioButton5.setText("Busca em Profundidade");
+        RadioBuscaProfundidade.setText("Busca em Profundidade");
+        RadioBuscaProfundidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioBuscaProfundidadeActionPerformed(evt);
+            }
+        });
 
-        jRadioButton6.setText("Busca de custo uniforme");
+        RadioCustoUniforme.setText("Busca de custo uniforme");
+        RadioCustoUniforme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioCustoUniformeActionPerformed(evt);
+            }
+        });
 
-        jRadioButton7.setText("Busca melhor primeiro");
+        RadioBestFirstSearch.setText("Busca melhor primeiro");
+        RadioBestFirstSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioBestFirstSearchActionPerformed(evt);
+            }
+        });
 
-        jRadioButton8.setSelected(true);
-        jRadioButton8.setText("Busca A*");
+        RadioAstar.setSelected(true);
+        RadioAstar.setText("Busca A*");
+        RadioAstar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioAstarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -115,23 +166,23 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton8))
+                    .addComponent(RadioBuscaProfundidade)
+                    .addComponent(RadioCustoUniforme)
+                    .addComponent(RadioBestFirstSearch)
+                    .addComponent(RadioAstar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton5)
+                .addComponent(RadioBuscaProfundidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton6)
+                .addComponent(RadioCustoUniforme)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton7)
+                .addComponent(RadioBestFirstSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton8)
+                .addComponent(RadioAstar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -139,11 +190,11 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel4.setText("Largura");
+        jLabel4.setText("Largura (px)");
 
         Edit_Largura.setText("400");
 
-        jLabel5.setText("Altura");
+        jLabel5.setText("Altura (px)");
 
         Edit_Altura.setText("400");
 
@@ -174,7 +225,7 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Edit_Altura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -190,22 +241,58 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
             .addGap(0, 398, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Executar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Btn_executar.setText("Executar");
+        Btn_executar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Btn_executarActionPerformed(evt);
             }
         });
+
+        Btn_padrao.setText("Padrão");
+        Btn_padrao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_padraoActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Arquivo");
+
+        MenuItem_Sair.setText("Sair");
+        MenuItem_Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItem_SairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItem_Sair);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Ajuda");
+
+        MenuItem_Ajuda.setText("Sobre a aplicação");
+        MenuItem_Ajuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItem_AjudaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuItem_Ajuda);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Btn_padrao, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btn_executar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,11 +309,11 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -236,9 +323,11 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Btn_executar)
+                    .addComponent(Btn_padrao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -247,17 +336,144 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-                
-        if((Edit_Altura.getText().toString().isEmpty()) || (Edit_Largura.getText().toString().isEmpty())){
-            JOptionPane.showMessageDialog(null, "Campo do tamanho de tela está vazio: ");
+    private void Btn_executarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_executarActionPerformed
+        // Calculo das medidas em pixel
+        linha = ( (Integer.valueOf(Edit_Largura.getText().toString())) / tamanhoQuadrado );
+        coluna = ( (Integer.valueOf(Edit_Altura.getText().toString())) / tamanhoQuadrado );
+        
+        //Faz a chamada da porcentagem da parede escolhida
+        if(VerificarParedes() == true){
+            
         }else{
             
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //Possível escolha do tipo de algoritmo utilizado
+        
+        
+    }//GEN-LAST:event_Btn_executarActionPerformed
 
+    private void Btn_padraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_padraoActionPerformed
+        // Padrões definidos na altura e largura
+        Edit_Altura.setText("400");
+        Edit_Largura.setText("400");
+        
+        //Definição do RadioButton para os padrões da aplicação
+        RadioPrimeiraOpcao.setSelected(false);
+        RadioSegundaOpcao.setSelected(true);
+        RadioTerceiraOpcao.setSelected(false);
+        RadioQuartaOpcao.setSelected(false);
+        
+        //Definição do RadioButton para os padrões da aplicação
+        RadioBuscaProfundidade.setSelected(false);
+        RadioCustoUniforme.setSelected(false);
+        RadioBestFirstSearch.setSelected(false);
+        RadioAstar.setSelected(true);
+    }//GEN-LAST:event_Btn_padraoActionPerformed
+
+    private void RadioPrimeiraOpcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioPrimeiraOpcaoActionPerformed
+        // TODO add your handling code here:
+        if(RadioPrimeiraOpcao.isSelected()){
+            RadioSegundaOpcao.setSelected(false);
+            RadioTerceiraOpcao.setSelected(false);
+            RadioQuartaOpcao.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioPrimeiraOpcaoActionPerformed
+
+    private void RadioSegundaOpcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSegundaOpcaoActionPerformed
+        // TODO add your handling code here:
+        if(RadioSegundaOpcao.isSelected()){
+            RadioPrimeiraOpcao.setSelected(false);
+            RadioTerceiraOpcao.setSelected(false);
+            RadioQuartaOpcao.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioSegundaOpcaoActionPerformed
+
+    private void RadioTerceiraOpcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioTerceiraOpcaoActionPerformed
+        // TODO add your handling code here:
+        if(RadioTerceiraOpcao.isSelected()){
+            RadioPrimeiraOpcao.setSelected(false);
+            RadioSegundaOpcao.setSelected(false);
+            RadioQuartaOpcao.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioTerceiraOpcaoActionPerformed
+
+    private void RadioQuartaOpcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioQuartaOpcaoActionPerformed
+        // TODO add your handling code here:
+        if(RadioQuartaOpcao.isSelected()){
+            RadioPrimeiraOpcao.setSelected(false);
+            RadioSegundaOpcao.setSelected(false);
+            RadioTerceiraOpcao.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioQuartaOpcaoActionPerformed
+
+    private void RadioBuscaProfundidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBuscaProfundidadeActionPerformed
+        // TODO add your handling code here:
+        if(RadioBuscaProfundidade.isSelected()){
+            RadioCustoUniforme.setSelected(false);
+            RadioBestFirstSearch.setSelected(false);
+            RadioAstar.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioBuscaProfundidadeActionPerformed
+
+    private void RadioCustoUniformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioCustoUniformeActionPerformed
+        // TODO add your handling code here:
+        if(RadioCustoUniforme.isSelected()){
+            RadioBuscaProfundidade.setSelected(false);
+            RadioBestFirstSearch.setSelected(false);
+            RadioAstar.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioCustoUniformeActionPerformed
+
+    private void RadioBestFirstSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBestFirstSearchActionPerformed
+        // TODO add your handling code here:
+        if(RadioBestFirstSearch.isSelected()){
+            RadioBuscaProfundidade.setSelected(false);
+            RadioCustoUniforme.setSelected(false);
+            RadioAstar.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioBestFirstSearchActionPerformed
+
+    private void RadioAstarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioAstarActionPerformed
+        // TODO add your handling code here:
+        if(RadioAstar.isSelected()){
+            RadioBuscaProfundidade.setSelected(false);
+            RadioCustoUniforme.setSelected(false);
+            RadioBestFirstSearch.setSelected(false);
+        }
+    }//GEN-LAST:event_RadioAstarActionPerformed
+
+    private void MenuItem_AjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem_AjudaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuItem_AjudaActionPerformed
+
+    private void MenuItem_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem_SairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_MenuItem_SairActionPerformed
+    //Código para verificar as porcentagens da parede
+    private boolean VerificarParedes(){
+        //0%
+        if(RadioPrimeiraOpcao.isSelected() == true){
+            porcentagemParede = 0;
+            return true;
+        //25%
+        }else if(RadioSegundaOpcao.isSelected() == true){
+            porcentagemParede = 25;
+            return true;
+        //50%
+        }else if(RadioTerceiraOpcao.isSelected() == true){
+            porcentagemParede = 50;
+            return true;
+        //75%
+        }else if(RadioQuartaOpcao.isSelected() == true){
+            porcentagemParede = 75;
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -294,26 +510,31 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_executar;
+    private javax.swing.JButton Btn_padrao;
     private javax.swing.JTextField Edit_Altura;
     private javax.swing.JTextField Edit_Largura;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem MenuItem_Ajuda;
+    private javax.swing.JMenuItem MenuItem_Sair;
+    private javax.swing.JRadioButton RadioAstar;
+    private javax.swing.JRadioButton RadioBestFirstSearch;
+    private javax.swing.JRadioButton RadioBuscaProfundidade;
+    private javax.swing.JRadioButton RadioCustoUniforme;
+    private javax.swing.JRadioButton RadioPrimeiraOpcao;
+    private javax.swing.JRadioButton RadioQuartaOpcao;
+    private javax.swing.JRadioButton RadioSegundaOpcao;
+    private javax.swing.JRadioButton RadioTerceiraOpcao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
     // End of variables declaration//GEN-END:variables
 }
