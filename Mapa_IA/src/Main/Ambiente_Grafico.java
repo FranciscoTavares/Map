@@ -6,6 +6,7 @@
 package Main;
 
 import Métodos.Forma;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
     private Integer linha;
     private Integer coluna;
     private Integer porcentagemParede;
+    private Integer tipoAlgoritmo;
     private Forma labirinto;
 
     /**
@@ -343,9 +345,9 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         
         //Faz a chamada da porcentagem da parede escolhida
         if(VerificarParedes() == true){
-            
+            chamadaBusca();
         }else{
-            
+            JOptionPane.showMessageDialog(null, "Erro selecione as opções ou clique em padrão");
         }
         
         //Possível escolha do tipo de algoritmo utilizado
@@ -361,6 +363,7 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         //Definição do RadioButton para os padrões da aplicação
         RadioPrimeiraOpcao.setSelected(false);
         RadioSegundaOpcao.setSelected(true);
+        porcentagemParede = 25;
         RadioTerceiraOpcao.setSelected(false);
         RadioQuartaOpcao.setSelected(false);
         
@@ -451,6 +454,7 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_MenuItem_SairActionPerformed
+    
     //Código para verificar as porcentagens da parede
     private boolean VerificarParedes(){
         //0%
@@ -472,6 +476,11 @@ public class Ambiente_Grafico extends javax.swing.JFrame {
         }else{
             return false;
         }
+    }
+    
+    //Código para verificar o algoritmo chamado
+    public void chamadaBusca(){
+        
     }
     
     /**
